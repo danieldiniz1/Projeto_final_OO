@@ -216,7 +216,7 @@ while iniciarmanha == True:
                         elif opcao3 == "6":
                             print("Você foi a farmacia.")
                             if(personagem.dinheiro >= 20):
-                               casa.remedios += 10
+                               casa.remedios += 5
                                personagem.dinheiro -= 20
                                relogio.avancaTempo(30)
                             else:
