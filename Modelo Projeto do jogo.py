@@ -1,6 +1,7 @@
 # Proposta de projeto de ficção interativa para avaliação de OO
 # Sugestão: completar com classes filhas colocando pessoas saudáveis, trabalhos menos remunerados, casas melhor equipadas, entre outros.
 # O código apresentado abaixo é apenas um modelo a ser utilizado como referência. O Grupo pode criar uma nova situação e inclusive melhorar o código abaixo.
+from time import sleep
 
 class Relogio:
     def __init__(self):
@@ -25,7 +26,7 @@ class Personagem:
         self.fome = True
         self.medicado = False
         self.dinheiro = 0
-        self.salario = 60
+        self.salario = 30
     
     def __str__(self):
         return "Você está " + ("sujo" if self.sujo else "limpo")+", "+("com" if self.fome else "sem")+" fome e "+("" if self.medicado else "não ")+"tomou sua medicação. Você tem "+str(self.dinheiro)+" reais na sua conta."
@@ -41,28 +42,25 @@ class Casa:
         self.comida = 5
 
 iniciarmanha = True
+menu = ["Ações:", "1 - Tomar banho e escovar os dentes", "2 - Fazer café da manhã", "3 - Pedir café da manhã", "4 - Tomar café da manhã", "5 - Tomar remédio", "6 - Comprar remédio", "7 - Ir trabalhar", "0 - Sair do jogo"   ]
 dia = 1
 relogio = Relogio()
 personagem = Personagem()
 casa = Casa()
 cafe_da_manha = False
+nome = input("Digite seu nome: ")
 while iniciarmanha == True:
     print()
     print("---")
-    print("São "+str(relogio)+" do dia "+str(dia)+". Você tem que sair pro trabalho até às 07:00.")
+    print(nome+" São "+str(relogio)+" do dia "+str(dia)+". Você tem que sair pro trabalho até às 07:00.")
     print(f"Você tem {casa.comida} comida(s) em casa e {casa.remedios} remedio(s)! ")
     print(personagem)
     print("")
-    print("Ações:")
-    print("1 - Tomar banho e escovar os dentes")
-    print("2 - Fazer café da manhã")
-    print("3 - Pedir café da manhã")
-    print("4 - Tomar café da manhã")
-    print("5 - Tomar remédio")
-    print("6 - Comprar remédio")
-    print("7 - Ir trabalhar")
-    print("0 - Sair do jogo")
-    opcao = input("Escolha sua ação:")
+    sleep(1)
+    for m in menu:
+        print(m)
+    sleep(1)
+    opcao = input("Escolha sua ação: ")
     print()
     if(opcao == "1"):
         personagem.sujo = False
@@ -116,23 +114,15 @@ while iniciarmanha == True:
             recebido = 0
         elif (personagem.medicado):
             iniciartrabalho = True
+            menu2 = ["Ações:", "1 - Bater o ponto.", "2 - Tomar café ", "3 - Ir a mesa de trabalho.", "4 - Enrolar", "5 - Ir ao Almoxarifado",  "6 - Trabalhar de verdade.", "7 - Conversar com os colegas.", "8 - Participar da reunião.", "9 - Almoçar.", "10 - Ir para casa.", "0 - Sair do jogo"   ]
             while iniciartrabalho == True:
                 print()
-                print("São "+str(relogio)+" do dia "+str(dia)+". Você tem que trabalhar até as 18:00.")
+                print(nome+ " São "+str(relogio)+" do dia "+str(dia)+". Você tem que trabalhar até as 18:00.")
                 print(f'Você tem R${personagem.dinheiro:.2f} na conta.')
                 print()
-                print("Ações:")
-                print("1 - Bater o ponto.")
-                print("2 - Tomar café ")
-                print("3 - Ir a mesa de trabalho.")
-                print("4 - Enrolar")
-                print("5 - Ir ao Almoxarifado")
-                print("6 - Trabalhar de verdade.")
-                print("7 - Conversar com os colegas.")
-                print("8 - Participar da reunião.")
-                print("9 - Almoçar.")
-                print("10 - Ir para casa.")
-                print("0 - Sair do jogo")
+                sleep(1)
+                for m2 in menu2:
+                    print(m2)
                 opcao2= input("escola sua ação: ")
                 print()
                 if opcao2 == "1":
@@ -170,22 +160,16 @@ while iniciarmanha == True:
                     print("Você foi para casa...")
                     relogio.avancaTempo(15)
                     personagem.dinheiro += recebido
-                    iniciarnoite = True                    
+                    iniciarnoite = True
+                    menu3 = ["Ações:", "1 - Ir para a academia.", "2 - Assistir série.", "3 - Estudar.", "4 - Tomar Banho",  "5 - Jantar.",  "6 - Ir a farmacia.","7 - Ir ao mercado.", "8 - Dormir.", "0 - Sair do jogo."  ]                    
                     while iniciarnoite == True:
                         print()
-                        print("São "+str(relogio)+" do dia "+str(dia)+". Você está em casa e tem que dormir até as 24:00.")
+                        print(nome + " São "+str(relogio)+" do dia "+str(dia)+". Você está em casa e tem que dormir até as 24:00.")
                         print(f'Você tem R${personagem.dinheiro:.2f} na conta, {casa.remedios} remedio(s) e {casa.comida} comida(s) em casa!')
                         print()
-                        print("Ações:")
-                        print("1 - Ir para a academia.")
-                        print("2 - Assistir série.")
-                        print("3 - Estudar.")
-                        print("4 - Tomar Banho")
-                        print("5 - Jantar.")
-                        print("6 - Ir a farmacia.")
-                        print("7 - Ir ao mercado.")
-                        print("8 - Dormir.")
-                        print("0 - Sair do jogo.")
+                        sleep(1)
+                        for m3 in menu3:
+                            print(m3)
                         opcao3 = input("escolha sua ação: ")
                         print()
                         if opcao3 == "1":
@@ -239,7 +223,7 @@ while iniciarmanha == True:
                             iniciarnoite = False
                             iniciartrabalho =False
                         elif opcao3 == "0":
-                            print("Jogo finalizado.")
+                            print("Jogo finalizado!")
                             iniciarmanha = False
                             iniciartrabalho = False
                             iniciarnoite = False
@@ -247,29 +231,13 @@ while iniciarmanha == True:
                             print("Opção inválida!")
                             relogio.avancaTempo(5)
                 elif opcao2 == "0":
-                    print("Programa finalizado.")
+                    print("jogo finalizado!")
                     iniciarmanha = False
                     iniciarnoite = False
                     iniciartrabalho = False
                 else:
                     print("Opção inválida!")
                     relogio.avancaTempo(5)
-        #elif(personagem.sujo):
-         #   print("Como você estava sujo, seus colegas reclamaram para seu chefe, e você levou uma advertência.")
-          #  recebido *= 0.9
-        #elif(personagem.fome):
-         #   print("Como você estava com fome, você trabalhou metade do que consegue trabalhar.")
-          #  recebido *= 0.5
-        #elif(relogio.atrasado()):
-         #   print("Como você chegou atrasado, você produziu menos do que de costume.")
-          #  recebido *= 0.8
-        #print("Você recebeu "+str(recebido)+" reais pelo seu trabalho hoje.")
-        #print("-=-=-")
-
-        #personagem.dinheiro += recebido
-        #personagem.dormir()
-        #relogio = Relogio()
-        
     elif(opcao == "0"):
         print("Jogo finalizado! ")
         iniciarmanha = False
