@@ -57,8 +57,9 @@ while iniciarmanha == True:
     print(personagem)
     print("")
     sleep(1)
-    for m in menu:
-        print(m)
+    for decisao in menu:
+        print(decisao)
+        #sleep(0.5)
     sleep(1)
     opcao = input("Escolha sua ação: ")
     print()
@@ -103,12 +104,16 @@ while iniciarmanha == True:
             print("A cartela com 10 remédios custa 20 reais, você não tem dinheiro suficiente.")
             relogio.avancaTempo(5)
     elif(opcao == "7"):
+        recebido = personagem.salario
+        if relogio.atrasado():
+            print('Você está atrasado e seu salário será descontado R$ 10.00.')
+            
         print("-=-=-")
         print("Você foi trabalhar.")
         print(personagem)
         relogio.avancaTempo(5)
         print("-=-=-")
-        recebido = personagem.salario
+        #recebido = personagem.salario
         if(not personagem.medicado):
             print("Como você não tomou seu remédio, você ficou doente no caminho e não chegou no trabalho")
             recebido = 0
@@ -121,8 +126,9 @@ while iniciarmanha == True:
                 print(f'Você tem R${personagem.dinheiro:.2f} na conta.')
                 print()
                 sleep(1)
-                for m2 in menu2:
-                    print(m2)
+                for decisao2 in menu2:
+                    print(decisao2)
+                    #sleep(0.5)
                 opcao2= input("escola sua ação: ")
                 print()
                 if opcao2 == "1":
@@ -137,48 +143,51 @@ while iniciarmanha == True:
                 elif opcao2 == "4":
                     print("Você está enrolando...")
                     relogio.avancaTempo(120)
-                    recebido -= personagem.salario - 30
+                    recebido -= 20
                 elif opcao2 == "5":
                     print("Você está no almoxarifado.")
                     relogio.avancaTempo(30)
-                    recebido+= personagem.salario * 0.1
+                    recebido+= personagem.salario * 0.3
                 elif opcao2 == "6":
                     print("Você está trabalhando...")
                     relogio.avancaTempo(240)
-                    recebido+= personagem.salario 
+                    recebido += personagem.salario 
                 elif opcao2 == "7":
                     print("Você está conversando com os colegas.")
                     relogio.avancaTempo(20)
                 elif opcao2 == "8":
-                    print("Você em reunião...")
+                    print("Você está em reunião...")
                     relogio.avancaTempo(30)
-                    recebido+= personagem.salario - 20
+                    recebido += 20
                 elif opcao2 == "9":
                     print("Você está almoçando...")
                     relogio.avancaTempo(90)
                 elif opcao2 == "10":
                     print("Você foi para casa...")
+                    if relogio.atrasado():
+                        recebido -= 10
                     relogio.avancaTempo(15)
                     personagem.dinheiro += recebido
                     iniciarnoite = True
-                    menu3 = ["Ações:", "1 - Ir para a academia.", "2 - Assistir série.", "3 - Estudar.", "4 - Tomar Banho",  "5 - Jantar.",  "6 - Ir a farmacia.","7 - Ir ao mercado.", "8 - Dormir.", "0 - Sair do jogo."  ]                    
+                    menu3 = ["Ações:", "1 - Ir para a academia.", "2 - Assistir série.", "3 - Estudar.", "4 - Tomar Banho",  "5 - Jantar.",  "6 - Ir a farmácia.","7 - Ir ao mercado.", "8 - Dormir.", "0 - Sair do jogo."  ]                    
                     while iniciarnoite == True:
                         print()
                         print(nome + " São "+str(relogio)+" do dia "+str(dia)+". Você está em casa e tem que dormir até as 24:00.")
-                        print(f'Você tem R${personagem.dinheiro:.2f} na conta, {casa.remedios} remedio(s) e {casa.comida} comida(s) em casa!')
+                        print(f'Você tem R${personagem.dinheiro:.2f} na conta, {casa.remedios} remédio(s) e {casa.comida} comida(s) em casa!')
                         print()
                         sleep(1)
-                        for m3 in menu3:
-                            print(m3)
+                        for decisao3 in menu3:
+                            print(decisao3)
+                            sleep(0.5)
                         opcao3 = input("escolha sua ação: ")
                         print()
                         if opcao3 == "1":
                             if personagem.dinheiro >= 10:
                                 relogio.avancaTempo(60)
                                 personagem.dinheiro-= 10
-                                print("Você foi a academia...")                       
+                                print("Você foi à academia...")                       
                             else:
-                                print("Você não tem dinheiro para pagar a academia!")
+                                print("Você não tem dinheiro para pagar à academia!")
                                 relogio.avancaTempo(15)
                         elif opcao3 == "2":
                                 if (personagem.dinheiro >=5):
@@ -186,7 +195,7 @@ while iniciarmanha == True:
                                     print("Você assistiu suas séries.")
                                     relogio.avancaTempo(180)
                                 else:
-                                    print('Você não tem dinheiro para pagar a Netflix.')
+                                    print('Você não tem dinheiro para pagar à Netflix.')
                         elif opcao3 == "3":
                             print("Você está estudando...")
                             relogio.avancaTempo(120)
@@ -198,13 +207,13 @@ while iniciarmanha == True:
                             casa.comida -= 1
                             relogio.avancaTempo(90)
                         elif opcao3 == "6":
-                            print("Você foi a farmacia.")
+                            print("Você foi à farmacia.")
                             if(personagem.dinheiro >= 20):
                                casa.remedios += 5
                                personagem.dinheiro -= 20
                                relogio.avancaTempo(30)
                             else:
-                                print(f"A cartela com 10 remédios custa 20 reais, e você tem: R${personagem.dinheiro:.2f}")
+                                print(f"A cartela com 10 remédios custa 20 reais e você tem: R${personagem.dinheiro:.2f}")
                                 relogio.avancaTempo(5)
                         elif opcao3 == "7":
                             if personagem.dinheiro >=75:
@@ -213,10 +222,10 @@ while iniciarmanha == True:
                                 relogio.avancaTempo(120)
                                 print("Você foi ao mercado.")
                             else:
-                                print(f"As compras custam R$150.00, e você tem: R${personagem.dinheiro:.2f}")
+                                print(f"As compras custam R$150.00 e você tem: R${personagem.dinheiro:.2f}")
                         elif opcao3 == "8":
                             print("Você foi dormir.")
-                            personagem.dinheiro += recebido
+                            #personagem.dinheiro += recebido
                             personagem.dormir()
                             relogio = Relogio()
                             dia+=1
