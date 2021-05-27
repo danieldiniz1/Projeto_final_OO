@@ -59,7 +59,7 @@ while iniciarmanha == True:
     sleep(1)
     for decisao in menu:
         print(decisao)
-        #sleep(0.5)
+        sleep(0.5)
     sleep(1)
     opcao = input("Escolha sua ação: ")
     print()
@@ -128,7 +128,7 @@ while iniciarmanha == True:
                 sleep(1)
                 for decisao2 in menu2:
                     print(decisao2)
-                    #sleep(0.5)
+                    sleep(0.5)
                 opcao2= input("escola sua ação: ")
                 print()
                 if opcao2 == "1":
@@ -253,3 +253,9 @@ while iniciarmanha == True:
     else:
         print("Opção inválida!")
         relogio.avancaTempo(5)
+
+
+#Fechamento no jogo,
+#apresentação, ideia do jogo
+#separação em arquivos
+#acabar com o looping infinito
