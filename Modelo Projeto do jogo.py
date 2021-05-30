@@ -77,6 +77,7 @@ while iniciarmanha == True:
         print(f'\033[1;31m {decisao}\033[m' )
         sleep(0.3)
     opcao = input(f"\033[1;32m Escolha sua ação:\033[m ")
+
     print()
     
     if(opcao == "1"):
@@ -126,6 +127,7 @@ while iniciarmanha == True:
             print('Você está atrasado e seu salário será descontado R$ 10.00.')
             recebido -= 10
         relogio.avancaTempo(5)
+
         if(not personagem.medicado):
             print("Como você não tomou seu remédio, você ficou doente no caminho e não chegou no trabalho")
             recebido = 0
@@ -139,11 +141,13 @@ while iniciarmanha == True:
                 print(trabalho)
                 print(f' Você tem R${personagem.dinheiro:.2f} na conta.\033[m')
                 print()
+
                 sleep(2)
                 for decisao2 in menu2:
                     print(f'\033[1;31m {decisao2}\033[m' )
                     sleep(0.3)
                 opcao2= input(f"\033[1;32m Escolha sua ação:\033[m ")
+
                 print()
                 
                 if opcao2 == "1":
@@ -162,6 +166,7 @@ while iniciarmanha == True:
                 elif opcao2 == "5":
                     print("\033[1;36m Você está no almoxarifado.\033[m")
                     relogio.avancaTempo(30)
+
                     recebido+= trabalho.salario * 0.5
                 elif opcao2 == "6":
                     print("\033[1;36m Você foi para seu Workspace...\033[m")
@@ -205,18 +210,22 @@ while iniciarmanha == True:
                         else:
                             print("\033[1;35m Opção inválida!\033[m ")
                             relogio.avancaTempo(5)
+
                 elif opcao2 == "7":
                     print("\033[1;36m Você está conversando com os colegas.\033[m")
                     relogio.avancaTempo(20)
                 elif opcao2 == "8":
+
                     print("\033[1;36m Você está em reunião...\033[m")
                     relogio.avancaTempo(30)
                     recebido += trabalho.salario * 0.5
                     trabalho.trabalhou = True
+
                 elif opcao2 == "9":
                     print("\033[1;36m Você está almoçando...\033[m")
                     relogio.avancaTempo(90)
                 elif opcao2 == "10":
+
                     print("\033[1;36m Você foi para casa...\033[m ")
                     if trabalho.trabalhou == True:
                         if personagem.sujo:
@@ -228,12 +237,13 @@ while iniciarmanha == True:
                     elif trabalho.trabalhou == False:
                         print("Como você não trabalhou de verdade, não vai receber nada!")
                         recebido = 0
+
                     relogio.avancaTempo(15)
                     personagem.dinheiro += recebido
 
                     iniciarnoite = True
                     menu3 = ["Ações:", "1 - Ir para a academia.", "2 - Assistir série.", "3 - Estudar.", "4 - Tomar Banho",  "5 - Jantar.",  "6 - Ir a farmácia.","7 - Ir ao mercado.", "8 - Dormir.", "0 - Sair do jogo."  ]                    
-                    
+
                     while iniciarnoite == True:
                         if relogio.horas >=24:
                             print(" \033[1;31m Passou das 00:00 e você foi dormir...\033[m ")
@@ -254,14 +264,17 @@ while iniciarmanha == True:
                             print(f'\033[1;31m {decisao3}\033[m' )
                             sleep(0.3)
                         opcao3 = input(f"\033[1;32m Escolha sua ação:\033[m ")
+
                         print()
                         if opcao3 == "1":
                             if personagem.dinheiro >= 10:
                                 relogio.avancaTempo(60)
                                 personagem.dinheiro-= 10
+
                                 print("\033[1;36m Você foi à academia...\033[m ")                       
                             else:
                                 print("\033[1;36m Você não tem dinheiro para pagar à academia!\033[m ")
+
                                 relogio.avancaTempo(15)
                         elif opcao3 == "2":
                                 if (personagem.dinheiro >=5):
